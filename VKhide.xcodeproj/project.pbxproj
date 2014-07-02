@@ -1,0 +1,485 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A5ED8BE119646130007F4279 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5ED8BE019646130007F4279 /* Foundation.framework */; };
+		A5ED8BE319646130007F4279 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5ED8BE219646130007F4279 /* CoreGraphics.framework */; };
+		A5ED8BE519646130007F4279 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5ED8BE419646130007F4279 /* UIKit.framework */; };
+		A5ED8BEB19646130007F4279 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5ED8BE919646130007F4279 /* InfoPlist.strings */; };
+		A5ED8BED19646130007F4279 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ED8BEC19646130007F4279 /* main.m */; };
+		A5ED8BF119646130007F4279 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ED8BF019646130007F4279 /* AppDelegate.m */; };
+		A5ED8BF419646130007F4279 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5ED8BF219646130007F4279 /* Main_iPhone.storyboard */; };
+		A5ED8BF719646130007F4279 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5ED8BF519646130007F4279 /* Main_iPad.storyboard */; };
+		A5ED8BFA19646130007F4279 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ED8BF919646130007F4279 /* ViewController.m */; };
+		A5ED8BFC19646130007F4279 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5ED8BFB19646130007F4279 /* Images.xcassets */; };
+		A5ED8C0319646130007F4279 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5ED8C0219646130007F4279 /* XCTest.framework */; };
+		A5ED8C0419646130007F4279 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5ED8BE019646130007F4279 /* Foundation.framework */; };
+		A5ED8C0519646130007F4279 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5ED8BE419646130007F4279 /* UIKit.framework */; };
+		A5ED8C0D19646130007F4279 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5ED8C0B19646130007F4279 /* InfoPlist.strings */; };
+		A5ED8C0F19646130007F4279 /* VKhideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5ED8C0E19646130007F4279 /* VKhideTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A5ED8C0619646130007F4279 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5ED8BD519646130007F4279 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5ED8BDC19646130007F4279;
+			remoteInfo = VKhide;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A5ED8BDD19646130007F4279 /* VKhide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKhide.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5ED8BE019646130007F4279 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A5ED8BE219646130007F4279 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A5ED8BE419646130007F4279 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A5ED8BE819646130007F4279 /* VKhide-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VKhide-Info.plist"; sourceTree = "<group>"; };
+		A5ED8BEA19646130007F4279 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A5ED8BEC19646130007F4279 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A5ED8BEE19646130007F4279 /* VKhide-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VKhide-Prefix.pch"; sourceTree = "<group>"; };
+		A5ED8BEF19646130007F4279 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A5ED8BF019646130007F4279 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A5ED8BF319646130007F4279 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		A5ED8BF619646130007F4279 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		A5ED8BF819646130007F4279 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A5ED8BF919646130007F4279 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A5ED8BFB19646130007F4279 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A5ED8C0119646130007F4279 /* VKhideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VKhideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5ED8C0219646130007F4279 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A5ED8C0A19646130007F4279 /* VKhideTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VKhideTests-Info.plist"; sourceTree = "<group>"; };
+		A5ED8C0C19646130007F4279 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A5ED8C0E19646130007F4279 /* VKhideTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VKhideTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5ED8BDA19646130007F4279 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5ED8BE319646130007F4279 /* CoreGraphics.framework in Frameworks */,
+				A5ED8BE519646130007F4279 /* UIKit.framework in Frameworks */,
+				A5ED8BE119646130007F4279 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5ED8BFE19646130007F4279 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5ED8C0319646130007F4279 /* XCTest.framework in Frameworks */,
+				A5ED8C0519646130007F4279 /* UIKit.framework in Frameworks */,
+				A5ED8C0419646130007F4279 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A5ED8BD419646130007F4279 = {
+			isa = PBXGroup;
+			children = (
+				A5ED8BE619646130007F4279 /* VKhide */,
+				A5ED8C0819646130007F4279 /* VKhideTests */,
+				A5ED8BDF19646130007F4279 /* Frameworks */,
+				A5ED8BDE19646130007F4279 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5ED8BDE19646130007F4279 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5ED8BDD19646130007F4279 /* VKhide.app */,
+				A5ED8C0119646130007F4279 /* VKhideTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5ED8BDF19646130007F4279 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5ED8BE019646130007F4279 /* Foundation.framework */,
+				A5ED8BE219646130007F4279 /* CoreGraphics.framework */,
+				A5ED8BE419646130007F4279 /* UIKit.framework */,
+				A5ED8C0219646130007F4279 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A5ED8BE619646130007F4279 /* VKhide */ = {
+			isa = PBXGroup;
+			children = (
+				A5ED8BEF19646130007F4279 /* AppDelegate.h */,
+				A5ED8BF019646130007F4279 /* AppDelegate.m */,
+				A5ED8BF219646130007F4279 /* Main_iPhone.storyboard */,
+				A5ED8BF519646130007F4279 /* Main_iPad.storyboard */,
+				A5ED8BF819646130007F4279 /* ViewController.h */,
+				A5ED8BF919646130007F4279 /* ViewController.m */,
+				A5ED8BFB19646130007F4279 /* Images.xcassets */,
+				A5ED8BE719646130007F4279 /* Supporting Files */,
+			);
+			path = VKhide;
+			sourceTree = "<group>";
+		};
+		A5ED8BE719646130007F4279 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5ED8BE819646130007F4279 /* VKhide-Info.plist */,
+				A5ED8BE919646130007F4279 /* InfoPlist.strings */,
+				A5ED8BEC19646130007F4279 /* main.m */,
+				A5ED8BEE19646130007F4279 /* VKhide-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A5ED8C0819646130007F4279 /* VKhideTests */ = {
+			isa = PBXGroup;
+			children = (
+				A5ED8C0E19646130007F4279 /* VKhideTests.m */,
+				A5ED8C0919646130007F4279 /* Supporting Files */,
+			);
+			path = VKhideTests;
+			sourceTree = "<group>";
+		};
+		A5ED8C0919646130007F4279 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5ED8C0A19646130007F4279 /* VKhideTests-Info.plist */,
+				A5ED8C0B19646130007F4279 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5ED8BDC19646130007F4279 /* VKhide */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5ED8C1219646130007F4279 /* Build configuration list for PBXNativeTarget "VKhide" */;
+			buildPhases = (
+				A5ED8BD919646130007F4279 /* Sources */,
+				A5ED8BDA19646130007F4279 /* Frameworks */,
+				A5ED8BDB19646130007F4279 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VKhide;
+			productName = VKhide;
+			productReference = A5ED8BDD19646130007F4279 /* VKhide.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A5ED8C0019646130007F4279 /* VKhideTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5ED8C1519646130007F4279 /* Build configuration list for PBXNativeTarget "VKhideTests" */;
+			buildPhases = (
+				A5ED8BFD19646130007F4279 /* Sources */,
+				A5ED8BFE19646130007F4279 /* Frameworks */,
+				A5ED8BFF19646130007F4279 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5ED8C0719646130007F4279 /* PBXTargetDependency */,
+			);
+			name = VKhideTests;
+			productName = VKhideTests;
+			productReference = A5ED8C0119646130007F4279 /* VKhideTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5ED8BD519646130007F4279 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Михаил Лукьянов";
+				TargetAttributes = {
+					A5ED8C0019646130007F4279 = {
+						TestTargetID = A5ED8BDC19646130007F4279;
+					};
+				};
+			};
+			buildConfigurationList = A5ED8BD819646130007F4279 /* Build configuration list for PBXProject "VKhide" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A5ED8BD419646130007F4279;
+			productRefGroup = A5ED8BDE19646130007F4279 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5ED8BDC19646130007F4279 /* VKhide */,
+				A5ED8C0019646130007F4279 /* VKhideTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5ED8BDB19646130007F4279 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5ED8BF719646130007F4279 /* Main_iPad.storyboard in Resources */,
+				A5ED8BFC19646130007F4279 /* Images.xcassets in Resources */,
+				A5ED8BF419646130007F4279 /* Main_iPhone.storyboard in Resources */,
+				A5ED8BEB19646130007F4279 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5ED8BFF19646130007F4279 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5ED8C0D19646130007F4279 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5ED8BD919646130007F4279 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5ED8BFA19646130007F4279 /* ViewController.m in Sources */,
+				A5ED8BF119646130007F4279 /* AppDelegate.m in Sources */,
+				A5ED8BED19646130007F4279 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5ED8BFD19646130007F4279 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5ED8C0F19646130007F4279 /* VKhideTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5ED8C0719646130007F4279 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5ED8BDC19646130007F4279 /* VKhide */;
+			targetProxy = A5ED8C0619646130007F4279 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A5ED8BE919646130007F4279 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5ED8BEA19646130007F4279 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A5ED8BF219646130007F4279 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5ED8BF319646130007F4279 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		A5ED8BF519646130007F4279 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5ED8BF619646130007F4279 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		A5ED8C0B19646130007F4279 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5ED8C0C19646130007F4279 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A5ED8C1019646130007F4279 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A5ED8C1119646130007F4279 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A5ED8C1319646130007F4279 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VKhide/VKhide-Prefix.pch";
+				INFOPLIST_FILE = "VKhide/VKhide-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A5ED8C1419646130007F4279 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VKhide/VKhide-Prefix.pch";
+				INFOPLIST_FILE = "VKhide/VKhide-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		A5ED8C1619646130007F4279 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VKhide.app/VKhide";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VKhide/VKhide-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "VKhideTests/VKhideTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		A5ED8C1719646130007F4279 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VKhide.app/VKhide";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VKhide/VKhide-Prefix.pch";
+				INFOPLIST_FILE = "VKhideTests/VKhideTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5ED8BD819646130007F4279 /* Build configuration list for PBXProject "VKhide" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5ED8C1019646130007F4279 /* Debug */,
+				A5ED8C1119646130007F4279 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5ED8C1219646130007F4279 /* Build configuration list for PBXNativeTarget "VKhide" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5ED8C1319646130007F4279 /* Debug */,
+				A5ED8C1419646130007F4279 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A5ED8C1519646130007F4279 /* Build configuration list for PBXNativeTarget "VKhideTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5ED8C1619646130007F4279 /* Debug */,
+				A5ED8C1719646130007F4279 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A5ED8BD519646130007F4279 /* Project object */;
+}
