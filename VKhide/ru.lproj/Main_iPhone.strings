@@ -1,0 +1,24 @@
+
+/* Class = "IBUIButton"; normalTitle = "Друзья"; ObjectID = "0LC-O1-I0y"; */
+"0LC-O1-I0y.normalTitle" = "Друзья";
+
+/* Class = "IBUISearchBar"; placeholder = "Поиск"; ObjectID = "Dav-zd-cwK"; */
+"Dav-zd-cwK.placeholder" = "Поиск";
+
+/* Class = "IBUIBarButtonItem"; title = "Выйти"; ObjectID = "KpZ-0C-jFc"; */
+"KpZ-0C-jFc.title" = "Выйти";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "byg-96-YUe"; */
+"byg-96-YUe.text" = "Title";
+
+/* Class = "IBUIButton"; normalTitle = "Войти"; ObjectID = "eeP-aD-Ct3"; */
+"eeP-aD-Ct3.normalTitle" = "Войти";
+
+/* Class = "IBUILabel"; text = "Subtitle"; ObjectID = "m4F-vg-dAy"; */
+"m4F-vg-dAy.text" = "Subtitle";
+
+/* Class = "IBUILabel"; text = "Вы были в сети"; ObjectID = "unx-bB-0Iv"; */
+"unx-bB-0Iv.text" = "Вы были в сети";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "upz-EV-aam"; */
+"upz-EV-aam.text" = "Title";
