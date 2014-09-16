@@ -39,9 +39,11 @@
     if (self)
     {
         _allFriends = [[NSMutableArray alloc] init];
+        //_additionalUsers = [[NSMutableArray alloc] init];
         self.prefs = [NSUserDefaults standardUserDefaults];
         //[self.prefs removeObjectForKey:@"favFriends"];
         self.favFriendsIDs = [[NSMutableArray alloc] initWithArray:[self.prefs arrayForKey:@"favFriends"]];
+        self.additionalUsers = [[NSMutableArray alloc] initWithArray:[self.prefs arrayForKey:@"additionalUsers"]];
     }
     
     return self;
@@ -53,13 +55,74 @@
     [self.prefs synchronize];
 }
 
+-(void)saveAddFriends
+{
+    [self.prefs setObject:self.additionalUsers forKey:@"additionalUsers"];
+    [self.prefs synchronize];
+}
+
+-(void)addAdditionalUsers:(Friend *)user
+{
+    if ([self.additionalUsers indexOfObject:user.id_user] != NSNotFound)
+        return;
+    [self.additionalUsers addObject:user.id_user];
+    [self saveAddFriends];
+}
+
+-(void)deleteAdditionalUserWithIndexInArray:(NSInteger)index
+{
+    [self.additionalUsers removeObjectAtIndex:self.additionalUsers.count - index - 1];
+    [self.allFriends removeObjectAtIndex:index];
+    [self saveAddFriends];
+}
+
 -(void)updateFriendsListForTableView:(UITableViewController *)tvc
 {
     [[[FriendsStore sharedStore] allFriends] removeAllObjects];
     
+    NSMutableString *ids_vk = [[NSMutableString alloc] initWithString:@""];
+    for (NSString *user_id_vk in self.additionalUsers)
+        [ids_vk appendString:[NSString stringWithFormat:@"%@,", user_id_vk]];
+    //if ([ids_vk isEqualToString:@""])
+      //  return;
+    
+    VKRequest *addUsersReq = [[VKApi users] get:@{VK_API_USER_IDS: ids_vk, VK_API_FIELDS: @"last_seen, online, photo_max, sex"}];
     VKRequest * userReq = [[VKApi friends] get:@{VK_API_FIELDS: @"last_seen, online, photo_max, sex", VK_API_ORDER : @"hints"}];
     
-    [userReq executeWithResultBlock:^(VKResponse * response) {
+    [addUsersReq executeWithResultBlock:^(VKResponse *response)
+     {
+         NSLog(@"ADD_FRiENDs%@", response.json);
+         NSInteger count = self.additionalUsers.count;
+         for (int i = 0; i < count; i++) {
+             Friend *friend =[[Friend alloc] initWithID: response.json[i][@"id"]
+                                              FirstName: response.json[i][@"first_name"]
+                                               lastName: response.json[i][@"last_name"]
+                                                    sex: response.json[i][@"sex"]
+                                               lastSeen: response.json[i][@"last_seen"][@"time"]
+                                                 avaUrl: response.json[i][@"photo_max"]
+                                                 online: (((NSString *) response.json[i][@"online"]).intValue == 1)
+                                                 mobile: ((((NSString *) response.json[i][@"online_mobile"]).intValue == 1) || ((NSString *)response.json[i][@"last_seen"][@"platform"]).intValue < 7)
+                              ];
+             
+             [[[FriendsStore sharedStore] allFriends] insertObject:friend atIndex:0];
+         }
+         
+         self.lastRefresh = [NSDate date];
+         NSString *lastUpdated = [NSString stringWithFormat:@"Последнее обновление: %@", [self.lastRefresh shortTimeString]];
+         tvc.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+         
+         [tvc.tableView reloadData];
+         [tvc.refreshControl endRefreshing];
+     } errorBlock:^(NSError *error) {
+         if (error.code != VK_API_ERROR) {
+             [error.vkError.request repeat];
+         } else {
+             NSLog(@"ADD FRIEND VK error: %@", error);
+         }
+     }];
+    
+    
+    [userReq executeAfter:addUsersReq withResultBlock:^(VKResponse *response) {
         //NSLog(@"%@", response.json);
         
         NSInteger count = ((NSString *) response.json[@"count"]).intValue;
@@ -83,6 +146,7 @@
         
         [tvc.tableView reloadData];
         [tvc.refreshControl endRefreshing];
+         
         
     } errorBlock:^(NSError * error) {
         if (error.code != VK_API_ERROR) {
@@ -91,6 +155,7 @@
             NSLog(@"VK error: %@", error);
         }
     }];
+    
     
 }
 

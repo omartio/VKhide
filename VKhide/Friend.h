@@ -25,6 +25,6 @@
 @property (nonatomic) BOOL mobile;
 
 -(id)initWithID:(NSString *)uid FirstName:(NSString *)fName lastName:(NSString *)lName sex:(NSString *)sex lastSeen:(NSString *)ls avaUrl:(NSString *)url online:(BOOL)online mobile:(BOOL)mobile;
-//-(id)initWithID:(NSString *)uid;
++(id)FrinedWithID:(NSString *)uid FirstName:(NSString *)fName lastName:(NSString *)lName avaUrl:(NSString *)url;
 
 @end

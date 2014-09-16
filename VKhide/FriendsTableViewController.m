@@ -39,6 +39,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    //[self.tableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VKhideBG.png"]]];
     
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Потяните чтобы обновить"];
@@ -139,10 +140,36 @@
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Был%@ в сети %@", sex, ls];
     }
     
+    cell.showsReorderControl = YES;
+    
     //NSString *mob = [friend mobile] ? @" (моб.)" : @"";
     //cell.detailTextLabel.text = [cell.detailTextLabel.text stringByAppendingString:mob];
     
     return cell;
+}
+
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return (indexPath.row < [[[FriendsStore sharedStore] additionalUsers] count]);
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        [[FriendsStore sharedStore]  deleteAdditionalUserWithIndexInArray:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
+
+-(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return (indexPath.row < [[[FriendsStore sharedStore] additionalUsers] count]);
+}
+
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    
 }
 
 -(UIImage *)drawImage:(UIImage*)profileImage withBadge:(UIImage *)badge

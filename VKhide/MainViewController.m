@@ -56,7 +56,8 @@
     CALayer* lr = [self.avaImg layer];
     [lr setMasksToBounds:YES];
     [lr setCornerRadius:self.avaImg.frame.size.height / 2.0];
-    [lr setBorderWidth:0];
+    [lr setBorderWidth:2];
+    [lr setBorderColor:[[UIColor whiteColor] CGColor]];
     
     favAvas = [[NSArray alloc] initWithObjects:self.favAva1, self.favAva2, self.favAva3, nil];
     favNames = [[NSArray alloc] initWithObjects:self.favName1, self.favName2, self.favName3, nil];

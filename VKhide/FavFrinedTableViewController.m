@@ -106,7 +106,7 @@
     cell.textLabel.text = [friend name];
 
     [cell.imageView setImageWithURL:[NSURL URLWithString:friend.ava_url]
-    placeholderImage:[UIImage imageNamed:@"no_avatar.png"]];
+                   placeholderImage:[UIImage imageNamed:@"no_avatar.png"]];
 
     cell.imageView.layer.masksToBounds = YES;
     cell.imageView.layer.borderWidth = 0;

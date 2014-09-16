@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		909CE5331997B99B00CF6333 /* mobile_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 909CE5321997B99B00CF6333 /* mobile_b.png */; };
+		90E3F9C319C065160091A71F /* SearchUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E3F9C219C065160091A71F /* SearchUserViewController.m */; };
 		90E71A1819ACDE5D009D0A36 /* VKhideLaunchR4.png in Resources */ = {isa = PBXBuildFile; fileRef = 90E71A1719ACDE5D009D0A36 /* VKhideLaunchR4.png */; };
 		90E85229198D535C00BF4C84 /* mobile.png in Resources */ = {isa = PBXBuildFile; fileRef = 90E85228198D535C00BF4C84 /* mobile.png */; };
 		90EAFE92197ECD3300463F76 /* VKhideBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 90EAFE91197ECD3300463F76 /* VKhideBG.png */; };
@@ -20,7 +21,6 @@
 		A58B4BB9196714C500D9E548 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58B4BB8196714C500D9E548 /* MainViewController.m */; };
 		A58B4BBC1967474300D9E548 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A58B4BBB1967474300D9E548 /* User.m */; };
 		A5C69208196877B900CD70B8 /* no_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = A5C69207196877B900CD70B8 /* no_avatar.png */; };
-		A5C6920A19687EC100CD70B8 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = A5C6920919687EC100CD70B8 /* background.png */; };
 		A5ED8BE119646130007F4279 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5ED8BE019646130007F4279 /* Foundation.framework */; };
 		A5ED8BE319646130007F4279 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5ED8BE219646130007F4279 /* CoreGraphics.framework */; };
 		A5ED8BE519646130007F4279 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5ED8BE419646130007F4279 /* UIKit.framework */; };
@@ -51,6 +51,8 @@
 /* Begin PBXFileReference section */
 		4D8D0B344E9145169AD7ADEF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		909CE5321997B99B00CF6333 /* mobile_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobile_b.png; sourceTree = "<group>"; };
+		90E3F9C119C065160091A71F /* SearchUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchUserViewController.h; sourceTree = "<group>"; };
+		90E3F9C219C065160091A71F /* SearchUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchUserViewController.m; sourceTree = "<group>"; };
 		90E71A1719ACDE5D009D0A36 /* VKhideLaunchR4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VKhideLaunchR4.png; sourceTree = "<group>"; };
 		90E85228198D535C00BF4C84 /* mobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobile.png; sourceTree = "<group>"; };
 		90EAFE91197ECD3300463F76 /* VKhideBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VKhideBG.png; sourceTree = "<group>"; };
@@ -73,7 +75,6 @@
 		A58B4BBA1967474300D9E548 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		A58B4BBB1967474300D9E548 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		A5C69207196877B900CD70B8 /* no_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_avatar.png; sourceTree = "<group>"; };
-		A5C6920919687EC100CD70B8 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		A5ED8BDD19646130007F4279 /* VKhide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKhide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5ED8BE019646130007F4279 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A5ED8BE219646130007F4279 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -121,6 +122,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		90E3F9C419C065270091A71F /* Img */ = {
+			isa = PBXGroup;
+			children = (
+				90E85228198D535C00BF4C84 /* mobile.png */,
+				909CE5321997B99B00CF6333 /* mobile_b.png */,
+				A5C69207196877B900CD70B8 /* no_avatar.png */,
+				90E71A1719ACDE5D009D0A36 /* VKhideLaunchR4.png */,
+				90EAFE91197ECD3300463F76 /* VKhideBG.png */,
+				90EB79BA197595FE008AA8E6 /* add_inv.png */,
+			);
+			name = Img;
+			sourceTree = "<group>";
+		};
 		A5ED8BD419646130007F4279 = {
 			isa = PBXGroup;
 			children = (
@@ -156,18 +170,14 @@
 		A5ED8BE619646130007F4279 /* VKhide */ = {
 			isa = PBXGroup;
 			children = (
-				90E85228198D535C00BF4C84 /* mobile.png */,
-				909CE5321997B99B00CF6333 /* mobile_b.png */,
-				A5C69207196877B900CD70B8 /* no_avatar.png */,
-				A5C6920919687EC100CD70B8 /* background.png */,
-				90E71A1719ACDE5D009D0A36 /* VKhideLaunchR4.png */,
-				90EAFE91197ECD3300463F76 /* VKhideBG.png */,
-				90EB79BA197595FE008AA8E6 /* add_inv.png */,
+				90E3F9C419C065270091A71F /* Img */,
 				A5ED8BEF19646130007F4279 /* AppDelegate.h */,
 				A5ED8BF019646130007F4279 /* AppDelegate.m */,
 				A57D7452196826C80080BE08 /* NSDate+Utilities.h */,
 				A57D7453196826C80080BE08 /* NSDate+Utilities.m */,
 				A5ED8BF219646130007F4279 /* Main_iPhone.storyboard */,
+				90E3F9C119C065160091A71F /* SearchUserViewController.h */,
+				90E3F9C219C065160091A71F /* SearchUserViewController.m */,
 				90EB79B719759258008AA8E6 /* FavFrinedTableViewController.h */,
 				90EB79B819759258008AA8E6 /* FavFrinedTableViewController.m */,
 				A57D745519683E710080BE08 /* FriendsTableViewController.h */,
@@ -304,7 +314,6 @@
 				A5ED8BFC19646130007F4279 /* Images.xcassets in Resources */,
 				90EB79BB197595FE008AA8E6 /* add_inv.png in Resources */,
 				A5ED8BF419646130007F4279 /* Main_iPhone.storyboard in Resources */,
-				A5C6920A19687EC100CD70B8 /* background.png in Resources */,
 				A5ED8BEB19646130007F4279 /* InfoPlist.strings in Resources */,
 				90E71A1819ACDE5D009D0A36 /* VKhideLaunchR4.png in Resources */,
 				90EAFE92197ECD3300463F76 /* VKhideBG.png in Resources */,
@@ -361,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A58B4BBC1967474300D9E548 /* User.m in Sources */,
+				90E3F9C319C065160091A71F /* SearchUserViewController.m in Sources */,
 				A57D745D19683EA20080BE08 /* Friend.m in Sources */,
 				A57D745719683E710080BE08 /* FriendsTableViewController.m in Sources */,
 				90EB79B919759258008AA8E6 /* FavFrinedTableViewController.m in Sources */,

@@ -27,4 +27,14 @@
     return self;
 }
 
++(id)FrinedWithID:(NSString *)uid FirstName:(NSString *)fName lastName:(NSString *)lName avaUrl:(NSString *)url
+{
+    Friend *friend = [[self alloc] init];
+    friend.id_user = uid;
+    friend.first_name = fName;
+    friend.last_name = lName;
+    friend.ava_url = url;
+    return friend;
+}
+
 @end

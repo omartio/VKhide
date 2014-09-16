@@ -373,7 +373,13 @@
                             <outlet property="delegate" destination="gRc-KP-BMQ" id="Zbp-Jc-Wgr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="MEF-Uf-Ajc"/>
+                    <navigationItem key="navigationItem" id="MEF-Uf-Ajc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2YA-bA-lVn">
+                            <connections>
+                                <segue destination="9Lk-tf-vfc" kind="push" id="Uxy-Tk-hrJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="Vsi-Y1-OfL" id="8pa-Zs-PFm"/>
                     </connections>
@@ -391,6 +397,110 @@
             </objects>
             <point key="canvasLocation" x="1173" y="66"/>
         </scene>
+        <!--Search User View Controller-->
+        <scene sceneID="onj-Ng-kV4">
+            <objects>
+                <viewController storyboardIdentifier="SearchUserViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Lk-tf-vfc" customClass="SearchUserViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hAV-ya-2dZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="DvG-tm-MYP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="40f-BX-A1E">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView appearanceType="aqua" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="VKhideBG.png" translatesAutoresizingMaskIntoConstraints="NO" id="I0j-1L-DCs">
+                                <rect key="frame" x="-2" y="0.0" width="325" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Поиск по" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cz9-K8-mo0">
+                                <rect key="frame" x="99" y="73" width="122" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="KoN-eK-c31">
+                                <rect key="frame" x="15" y="102" width="291" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="ID / Нику"/>
+                                    <segment title="Имени"/>
+                                </segments>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </segmentedControl>
+                            <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Поиск" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Cud-uP-KdD">
+                                <rect key="frame" x="15" y="149" width="225" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9Lk-tf-vfc" id="wyD-Id-sb3"/>
+                                </connections>
+                            </textField>
+                            <button appearanceType="aqua" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5GB-Op-Nr5">
+                                <rect key="frame" x="240" y="149" width="66" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Найти">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchButtonTapped:" destination="9Lk-tf-vfc" eventType="touchUpInside" id="zkx-nH-B43"/>
+                                </connections>
+                            </button>
+                            <tableView appearanceType="aqua" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qNe-Yf-4kV">
+                                <rect key="frame" x="15" y="196" width="291" height="372"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="1" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell appearanceType="aqua" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" id="ads-aZ-pMA">
+                                        <rect key="frame" x="0.0" y="22" width="291" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ads-aZ-pMA" id="1zu-Ax-ynK">
+                                            <rect key="frame" x="0.0" y="0.0" width="291" height="63"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="9Lk-tf-vfc" id="86m-1r-NZY"/>
+                                    <outlet property="delegate" destination="9Lk-tf-vfc" id="CeL-ji-jHN"/>
+                                </connections>
+                            </tableView>
+                            <activityIndicatorView hidden="YES" appearanceType="aqua" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="EFZ-ky-fEm">
+                                <rect key="frame" x="263" y="159" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0ZU-R0-e6n">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Добавить" id="Ohz-H9-94x">
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="addButtonTapped:" destination="9Lk-tf-vfc" id="sJN-q9-n3g"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addButton" destination="Ohz-H9-94x" id="6fs-zn-PEm"/>
+                        <outlet property="searchButton" destination="5GB-Op-Nr5" id="Gcq-jn-3nj"/>
+                        <outlet property="searchTextField" destination="Cud-uP-KdD" id="6h2-bV-iyU"/>
+                        <outlet property="spinner" destination="EFZ-ky-fEm" id="k1e-Bg-vY6"/>
+                        <outlet property="tableView" destination="qNe-Yf-4kV" id="00x-4Z-eag"/>
+                        <outlet property="typePicker" destination="KoN-eK-c31" id="yav-WD-6bq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O5U-4W-0Ba" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1603" y="66"/>
+        </scene>
     </scenes>
     <resources>
         <image name="VKhideBG.png" width="640" height="1136"/>
@@ -403,6 +513,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="7hB-Y0-bpR"/>
+        <segue reference="Ifq-3H-YcC"/>
     </inferredMetricsTieBreakers>
 </document>

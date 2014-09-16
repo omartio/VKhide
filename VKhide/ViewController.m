@@ -22,7 +22,7 @@ static NSArray  * SCOPE = nil;
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    SCOPE = @[VK_PER_WALL, VK_PER_NOHTTPS];
+    SCOPE = @[VK_PER_WALL, VK_PER_FRIENDS, VK_PER_GROUPS, VK_PER_NOHTTPS];
 	[super viewDidLoad];
     
 	[VKSdk initializeWithDelegate:self andAppId:@"4442573"];
