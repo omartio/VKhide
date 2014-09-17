@@ -12,8 +12,12 @@
 #import "FriendsStore.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "FavFrinedTableViewController.h"
+#import "FavFriendCell.h"
+#import <iAd/iAd.h>
 
 @interface MainViewController ()
+
+@property (nonatomic, strong) NSMutableArray *favFriends;
 
 @end
 
@@ -25,6 +29,9 @@
     NSArray *favAvas;
     NSArray *favNames;
     NSArray *favButtons;
+    
+    BOOL _bannerIsVisible;
+    ADBannerView *_adBanner;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -53,29 +60,64 @@
                                                 name:UIApplicationDidBecomeActiveNotification
                                               object:nil];
     
+    //круглая аватарка
     CALayer* lr = [self.avaImg layer];
     [lr setMasksToBounds:YES];
     [lr setCornerRadius:self.avaImg.frame.size.height / 2.0];
     [lr setBorderWidth:2];
     [lr setBorderColor:[[UIColor whiteColor] CGColor]];
     
-    favAvas = [[NSArray alloc] initWithObjects:self.favAva1, self.favAva2, self.favAva3, nil];
-    favNames = [[NSArray alloc] initWithObjects:self.favName1, self.favName2, self.favName3, nil];
-    favButtons = [[NSArray alloc] initWithObjects:self.favButton1, self.favButton2, self.favButton3, nil];
-    
-    for (int i = 0; i < 3; i ++)
-    {
-                /*
-        lr = [favAvas[i] layer];
-        [lr setMasksToBounds:YES];
-        [lr setCornerRadius:((UIImageView *)favAvas[i]).frame.size.height / 2.0];
-        [lr setBorderWidth:0];
-         */
-    }
-    
+    //Закругляем кнопки
     [self makeRectangleCorners:self.nameLabel.layer];
     [self makeRectangleCorners:self.frindButton.layer];
     [self makeRectangleCorners:self.lastseenBG.layer];
+
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    _adBanner = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 50)];
+    _adBanner.delegate = self;
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    if (!_bannerIsVisible)
+    {
+        // If banner isn't part of view hierarchy, add it
+        if (_adBanner.superview == nil)
+        {
+            [self.view addSubview:_adBanner];
+        }
+        
+        [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
+        
+        // Assumes the banner view is just off the bottom of the screen.
+        banner.frame = CGRectOffset(banner.frame, 0, -banner.frame.size.height);
+        
+        [UIView commitAnimations];
+        
+        _bannerIsVisible = YES;
+    }
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    NSLog(@"Failed to retrieve ad");
+    
+    if (_bannerIsVisible)
+    {
+        [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
+        
+        // Assumes the banner view is placed at the bottom of the screen.
+        banner.frame = CGRectOffset(banner.frame, 0, banner.frame.size.height);
+        
+        [UIView commitAnimations];
+        
+        _bannerIsVisible = NO;
+    }
 }
 
 -(void)makeRectangleCorners:(CALayer *)layer
@@ -94,14 +136,15 @@
         //Ava
         NSString *avaUrl = response.json[0][@"photo_max"];
         
-        [self.avaImg setImageWithURL:[NSURL URLWithString: avaUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-            [UIView animateWithDuration:0.5 animations:^{
-                self.avaImg.alpha = 1.0;
-            }];
-        }];
+        [self.profileButton.imageView setImageWithURL:[NSURL URLWithString: avaUrl] placeholderImage:[UIImage imageNamed:@"no_avatar.png"]];
+        CALayer* lr = [self.profileButton.imageView layer];
+        [lr setMasksToBounds:YES];
+        [lr setCornerRadius:self.profileButton.imageView.frame.size.height / 2.0];
+        [lr setBorderWidth:0];
+        [lr setBorderColor:[[UIColor whiteColor] CGColor]];
         
         //Name
-        self.nameLabel.text = [NSString stringWithFormat:@"%@ %@", response.json[0][@"first_name"], response.json[0][@"last_name"]];
+        self.navigationItem.title = [NSString stringWithFormat:@"%@ %@", response.json[0][@"first_name"], response.json[0][@"last_name"]];
         
     } errorBlock:^(NSError * error) {
         if (error.code != VK_API_ERROR) {
@@ -162,27 +205,8 @@
 
 -(IBAction)updateFav:(id)sender
 {
-
-    if ([[[FriendsStore sharedStore] favFriendsIDs] count] < 3)
-    {
-        for (int i = (int)[[[FriendsStore sharedStore] favFriendsIDs] count]+1; i < 3; i++)
-        {
-            ((UIImageView *)favAvas[i]).hidden = YES;
-            ((UILabel *)favNames[i]).text = @"";
-            ((UIButton *)favButtons[i]).enabled = NO;
-        }
-        
-        NSInteger last = (int)[[[FriendsStore sharedStore] favFriendsIDs] count];
-        ((UIImageView *)favAvas[last]).image = [UIImage imageNamed:@"add_inv.png"];
-        ((UIImageView *)favAvas[last]).alpha = 0.5f;
-        ((UIImageView *)favAvas[last]).hidden = NO;
-        ((UILabel *)favNames[last]).text = @"";
-        ((UIButton *)favButtons[last]).enabled = YES;
-    }
-    
     if ([[[FriendsStore sharedStore] favFriendsIDs] count] == 0)
         return;
-    
     
     NSMutableString *favIDs = [NSMutableString stringWithString:@""];
     for (NSString *uid in [[FriendsStore sharedStore] favFriendsIDs])
@@ -192,40 +216,8 @@
     
     [userReq executeWithResultBlock:^(VKResponse * response) {
         NSLog(@"%@", response.json);
-        
-        for (int i = 0; i < [[[FriendsStore sharedStore] favFriendsIDs] count]; i++)
-        {
-            UIImageView *currentFavAva = ((UIImageView *)favAvas[i]);
-            
-            [currentFavAva setImageWithURL:[NSURL URLWithString:response.json[i][@"photo_max"]]
-                           placeholderImage:[UIImage imageNamed:@"no_avatar.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                               currentFavAva.image = [self image:currentFavAva.image makeRoundCornersWithRadius:((UIImageView *)favAvas[i]).frame.size.height];
-                               if (((((NSString *) response.json[i][@"online_mobile"]).intValue == 1) || ((NSString *)response.json[i][@"last_seen"][@"platform"]).intValue < 7))
-                                   currentFavAva.image = [self drawImage:currentFavAva.image withBadge:[UIImage imageNamed:@"mobile.png"]];
-                           }];
-            
-            currentFavAva.hidden = NO;
-            currentFavAva.alpha = 1.0;
-            ((UIButton *)favButtons[i]).enabled = YES;
-            
-            //Online
-            online = ((NSString *) response.json[i][@"online"]).intValue == 1;
-            if (online)
-            {
-                ((UILabel *)favNames[i]).text = @"В сети";
-            }
-            else
-            {
-            ((UILabel *)favNames[i]).text = [NSDate lastseenTimestapm:response.json[i][@"last_seen"][@"time"] directTime:favDirect];
-            }
-            
-            
-            
-            /*NIAttributedLabel *label = favNames[i];
-            if (((((NSString *) response.json[i][@"online_mobile"]).intValue == 1) || ((NSString *)response.json[i][@"last_seen"][@"platform"]).intValue < 7))
-                [label insertImage:[UIImage imageNamed:@"mobile.png"] atIndex:0];*/
-        }
-        
+        self.favFriends = [NSMutableArray arrayWithArray:response.json];
+        [self.favFriendCollectionView reloadData];
     } errorBlock:^(NSError * error) {
         if (error.code != VK_API_ERROR) {
             [error.vkError.request repeat];
@@ -234,38 +226,6 @@
         }
     }];
 
-}
-
--(UIImage *)drawImage:(UIImage*)profileImage withBadge:(UIImage *)badge
-{
-    UIGraphicsBeginImageContextWithOptions(profileImage.size, NO, 0.0f);
-    [profileImage drawInRect:CGRectMake(0, 0, profileImage.size.width, profileImage.size.height)];
-    [badge drawInRect:CGRectMake(profileImage.size.width - badge.size.width, profileImage.size.height - badge.size.height, badge.size.width, badge.size.height)];
-    UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return resultImage;
-}
-
--(UIImage*)image:(UIImage *)image makeRoundCornersWithRadius:(const CGFloat)RADIUS {
-    
-    // Begin a new image that will be the new image with the rounded corners
-    // (here with the size of an UIImageView)
-    UIGraphicsBeginImageContextWithOptions(image.size, NO, image.scale);
-    
-    const CGRect RECT = CGRectMake(0, 0, image.size.width, image.size.height);
-    // Add a clip before drawing anything, in the shape of an rounded rect
-    [[UIBezierPath bezierPathWithRoundedRect:RECT cornerRadius:RADIUS] addClip];
-    // Draw your image
-    [image drawInRect:RECT];
-    
-    // Get the image, here setting the UIImageView image
-    //imageView.image
-    UIImage* imageNew = UIGraphicsGetImageFromCurrentImageContext();
-    
-    // Lets forget about that we were drawing
-    UIGraphicsEndImageContext();
-    
-    return imageNew;
 }
 
 -(IBAction)changeLastSeen:(id)sender
@@ -317,6 +277,80 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - FavFriendCollectionView
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return [[[FriendsStore sharedStore] favFriendsIDs] count] + 1;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    FavFriendCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FavFriendCell" forIndexPath:indexPath];
+    
+    //кнопка Добавить
+    if (indexPath.item == [[[FriendsStore sharedStore] favFriendsIDs] count])
+    {
+        cell.avaImg.image = [UIImage imageNamed:@"add_inv"];
+        cell.mobileImg.hidden = YES;
+        cell.titelLabel.text = @"";
+        cell.avaImg.layer.borderWidth = 0;
+        
+        return cell;
+    }
+    
+    //Отоброжение друга
+    id friend = self.favFriends[indexPath.item];
+    
+    [cell.avaImg setImageWithURL:[NSURL URLWithString:friend[@"photo_max"]] placeholderImage:[UIImage imageNamed:@"no_avatar.png"]];
+    cell.mobileImg.hidden = !(((((NSString *) friend[@"online_mobile"]).intValue == 1) || ((NSString *)friend[@"last_seen"][@"platform"]).intValue < 7));
+    cell.avaImg.layer.masksToBounds = YES;
+    cell.avaImg.layer.borderColor = [[UIColor whiteColor] CGColor];
+    cell.avaImg.layer.borderWidth = 2;
+    cell.avaImg.layer.cornerRadius = cell.avaImg.frame.size.height / 2.0;
+    
+    
+    //Online
+    online = ((NSString *) friend[@"online"]).intValue == 1;
+    if (online)
+    {
+        cell.titelLabel.text = @"В сети";
+    }
+    else
+    {
+        cell.titelLabel.text = [NSDate lastseenTimestapm:friend[@"last_seen"][@"time"] directTime:favDirect];
+    }
+    
+    if (friend == nil)
+        cell.titelLabel.text = @"...";
+    
+
+    return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    FavFrinedTableViewController *fftvc = [self.storyboard instantiateViewControllerWithIdentifier:@"FavFrinedTableViewController"];
+    fftvc.favID = indexPath.item;
+    [self.navigationController pushViewController:fftvc animated:YES];
+}
+
+-(void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath
+{
+    id favFriend = [[[FriendsStore sharedStore] favFriendsIDs] objectAtIndex:fromIndexPath.item];
+    [[[FriendsStore sharedStore] favFriendsIDs] removeObjectAtIndex:fromIndexPath.item];
+    [[[FriendsStore sharedStore] favFriendsIDs] insertObject:favFriend atIndex:toIndexPath.item];
+    [[FriendsStore sharedStore] saveFavFriends];
+    
+    id object = self.favFriends[fromIndexPath.item];
+    [self.favFriends removeObjectAtIndex:fromIndexPath.item];
+    [self.favFriends insertObject:object atIndex:toIndexPath.item];
+}
 
 #pragma mark - Navigation
 
@@ -325,18 +359,6 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@"FAV1"])
-    {
-        ((FavFrinedTableViewController *) segue.destinationViewController).favID = 0;
-    }
-    if ([segue.identifier isEqualToString:@"FAV2"])
-    {
-        ((FavFrinedTableViewController *) segue.destinationViewController).favID = 1;
-    }
-    if ([segue.identifier isEqualToString:@"FAV3"])
-    {
-        ((FavFrinedTableViewController *) segue.destinationViewController).favID = 2;
-    }
 }
 
 -(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated

@@ -10,8 +10,10 @@
 #import <VKSdk.h>
 #import <NGAParallaxMotion.h>
 #import <NIAttributedLabel.h>
+#import <LXReorderableCollectionViewFlowLayout.h>
+#import <iAd/iAd.h>
 
-@interface MainViewController : UIViewController <UINavigationControllerDelegate, UIAlertViewDelegate>
+@interface MainViewController : UIViewController <UINavigationControllerDelegate, UIAlertViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, LXReorderableCollectionViewDataSource, LXReorderableCollectionViewDelegateFlowLayout, ADBannerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *avaImg;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -23,18 +25,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *background;
 @property (weak, nonatomic) IBOutlet UIButton *frindButton;
 @property (weak, nonatomic) IBOutlet UIButton *lastseenBG;
+@property (weak, nonatomic) IBOutlet UIButton *profileButton;
 
 
-@property (weak, nonatomic) IBOutlet UIImageView *favAva1;
-@property (weak, nonatomic) IBOutlet UIImageView *favAva2;
-@property (weak, nonatomic) IBOutlet UIImageView *favAva3;
-
-@property (weak, nonatomic) IBOutlet NIAttributedLabel *favName1;
-@property (weak, nonatomic) IBOutlet NIAttributedLabel *favName2;
-@property (weak, nonatomic) IBOutlet NIAttributedLabel *favName3;
-
-@property (weak, nonatomic) IBOutlet UIButton *favButton1;
-@property (weak, nonatomic) IBOutlet UIButton *favButton2;
-@property (weak, nonatomic) IBOutlet UIButton *favButton3;
+@property (weak, nonatomic) IBOutlet UICollectionView *favFriendCollectionView;
 
 @end
