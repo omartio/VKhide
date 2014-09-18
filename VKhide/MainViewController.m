@@ -136,7 +136,9 @@
         //Ava
         NSString *avaUrl = response.json[0][@"photo_max"];
         
-        [self.profileButton.imageView setImageWithURL:[NSURL URLWithString: avaUrl] placeholderImage:[UIImage imageNamed:@"no_avatar.png"]];
+        [self.profileButton.imageView setImageWithURL:[NSURL URLWithString: avaUrl] placeholderImage:[UIImage imageNamed:@"no_avatar.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            [self.profileButton setImage:image forState:UIControlStateNormal];
+        }];
         CALayer* lr = [self.profileButton.imageView layer];
         [lr setMasksToBounds:YES];
         [lr setCornerRadius:self.profileButton.imageView.frame.size.height / 2.0];
@@ -338,6 +340,20 @@
     FavFrinedTableViewController *fftvc = [self.storyboard instantiateViewControllerWithIdentifier:@"FavFrinedTableViewController"];
     fftvc.favID = indexPath.item;
     [self.navigationController pushViewController:fftvc animated:YES];
+}
+
+-(BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.item == [[[FriendsStore sharedStore] favFriendsIDs] count])
+    {
+        return NO;
+    }
+    return YES;
+}
+
+-(BOOL)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath canMoveToIndexPath:(NSIndexPath *)toIndexPath
+{
+    return toIndexPath.item < [[[FriendsStore sharedStore] favFriendsIDs] count];
 }
 
 -(void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath

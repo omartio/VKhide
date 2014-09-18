@@ -89,7 +89,7 @@
     VKRequest *addUsersReq = [[VKApi users] get:@{VK_API_USER_IDS: ids_vk, VK_API_FIELDS: @"last_seen, online, photo_max, sex"}];
     VKRequest * userReq = [[VKApi friends] get:@{VK_API_FIELDS: @"last_seen, online, photo_max, sex", VK_API_ORDER : @"hints"}];
     
-    [addUsersReq executeWithResultBlock:^(VKResponse *response)
+    [addUsersReq executeAfter:userReq withResultBlock:^(VKResponse *response)
      {
          NSLog(@"ADD_FRiENDs%@", response.json);
          NSInteger count = self.additionalUsers.count;
@@ -122,7 +122,7 @@
      }];
     
     
-    [userReq executeAfter:addUsersReq withResultBlock:^(VKResponse *response) {
+    [userReq executeWithResultBlock:^(VKResponse *response) {
         //NSLog(@"%@", response.json);
         
         NSInteger count = ((NSString *) response.json[@"count"]).intValue;
