@@ -90,7 +90,7 @@ static const unsigned componentFlags = (NSYearCalendarUnit| NSMonthCalendarUnit 
     return [NSDate lastseenTimestapm:[NSString stringWithFormat:@"%ld", (long)self.timeIntervalSince1970] directTime:NO];
 }
 
-+ (NSString *) lastseenTimestapm:(NSString* ) ts directTime:(BOOL)direct
++ (NSString *) lastseenTimestapm:(NSString* ) ts directTime:(BOOL)NeedDirectTime
 {
     NSInteger ls = ts.intValue;
     
@@ -119,6 +119,11 @@ static const unsigned componentFlags = (NSYearCalendarUnit| NSMonthCalendarUnit 
     
     NSString *directTime = [NSString stringWithFormat:@"%@ в %@", day, [df stringFromDate: date]];
     
+    if (NeedDirectTime)
+    {
+        return directTime;
+    }
+    
     NSString *mintAgo = @"";
     if (minAfterLastSeen < 60)
     {
@@ -128,21 +133,7 @@ static const unsigned componentFlags = (NSYearCalendarUnit| NSMonthCalendarUnit 
         if (minAfterLastSeen == 1)
             minut = @"минуту назад";
         
-        NSString *ending = @"";
-        NSArray *endings = [[NSArray alloc] initWithObjects:@"минуту", @"минуты", @"минут", nil];
-        
-        if (minAfterLastSeen >= 11 && minAfterLastSeen <= 19)
-            ending = endings[2];
-        else {
-            NSInteger i = minAfterLastSeen % 10;
-            switch (i) {
-                case 1 : ending = endings[0]; break;
-                case 2 :
-                case 3 :
-                case 4 : ending = endings[1]; break;
-                default: ending = endings[2];
-            }
-        }
+        NSString *ending = [self endingForNumber:minAfterLastSeen WithArray:@[@"минуту", @"минуты", @"минут"]];
         
         minut = [NSString stringWithFormat:@"%ld %@ назад", (long)minAfterLastSeen, ending];
         
@@ -150,27 +141,44 @@ static const unsigned componentFlags = (NSYearCalendarUnit| NSMonthCalendarUnit 
     }
     else
     {
-        if (minAfterLastSeen < 3*60)
+        if (minAfterLastSeen < 24*60)
         {
-            if (minAfterLastSeen / 60 == 1)
-                mintAgo = @"час назад";
-            if (minAfterLastSeen / 60 > 1)
-                mintAgo = [NSString stringWithFormat:@"%ld часа назад", (long)minAfterLastSeen / 60];
-            
+            mintAgo = [NSString stringWithFormat:@"%ld %@ назад",
+                       (long)minAfterLastSeen / 60,
+                       [self endingForNumber:(minAfterLastSeen / 60) WithArray:@[@"час", @"часа", @"часов"]]
+                       ];
+        }
+        else
+        {
+            mintAgo = [NSString stringWithFormat:@"%ld %@ назад",
+                       (long)(minAfterLastSeen / 60 / 24),
+                       [self endingForNumber:(minAfterLastSeen / 60 / 24) WithArray:@[@"день", @"дня", @"дней"]]
+                       ];
         }
     }
     
-    if (!direct)
-    {
-        if ([mintAgo isEqualToString:@""])
-            return directTime;
-        else
-            return mintAgo;
+    return mintAgo;
+}
+
++(NSString *)endingForNumber:(NSInteger)n WithArray:(NSArray *)endings
+{
+    NSString *ending = @"";
+    //NSArray *endings = [[NSArray alloc] initWithObjects:@"минуту", @"минуты", @"минут", nil];
+    
+    if (n >= 11 && n <= 19)
+        ending = endings[2];
+    else {
+        NSInteger i = n % 10;
+        switch (i) {
+            case 1 : ending = endings[0]; break;
+            case 2 :
+            case 3 :
+            case 4 : ending = endings[1]; break;
+            default: ending = endings[2];
+        }
     }
-    else
-    {
-        return directTime;
-    }
+    
+    return ending;
 
 }
 
@@ -269,7 +277,7 @@ static const unsigned componentFlags = (NSYearCalendarUnit| NSMonthCalendarUnit 
 	NSDateComponents *components2 = [[NSDate currentCalendar] components:componentFlags fromDate:aDate];
 	
 	// Must be same week. 12/31 and 1/1 will both be week "1" if they are in the same week
-	if (components1.week != components2.week) return NO;
+	if (components1.weekOfYear != components2.weekOfYear) return NO;
 	
 	// Must have a time interval under 1 week. Thanks @aclark
 	return (abs([self timeIntervalSinceDate:aDate]) < D_WEEK);
@@ -570,7 +578,7 @@ static const unsigned componentFlags = (NSYearCalendarUnit| NSMonthCalendarUnit 
 - (NSInteger) week
 {
 	NSDateComponents *components = [[NSDate currentCalendar] components:componentFlags fromDate:self];
-	return components.week;
+	return components.weekOfYear;
 }
 
 - (NSInteger) weekday

@@ -30,7 +30,15 @@
 - (NSString *) stringWithFormat: (NSString *) format;
 
 - (NSString *) lastseen;
-+ (NSString *) lastseenTimestapm:(NSString* ) ts directTime:(BOOL)direct;
++ (NSString *) lastseenTimestapm:(NSString* ) ts directTime:(BOOL)NeedDirectTime;
+
+/**
+ Возвращает нужное окночание
+ @param число
+ @param склонение для 1, 4, 5
+ */
++ (NSString *) endingForNumber:(NSInteger)n WithArray: (NSArray *)endings;
+
 
 @property (nonatomic, readonly) NSString *shortString;
 @property (nonatomic, readonly) NSString *shortDateString;

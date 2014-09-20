@@ -113,13 +113,15 @@
     
     cell.textLabel.text = [friend name];
     
-    [cell.imageView setImageWithURL:[NSURL URLWithString:friend.ava_url]
-                   placeholderImage:[UIImage imageNamed:@"no_avatar.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:friend.ava_url]
+                      placeholderImage:[UIImage imageNamed:@"no_avatar.png"]
+                             completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                        image = [self image:image makeRoundCornersWithRadius:image.size.height];
                        if (friend.mobile)
                            image = [self drawImage:image withBadge:[UIImage imageNamed:@"mobile_b.png"]];
                        cell.imageView.image = image;
-                   }];
+                             }
+     ];
 
 /*
     cell.imageView.layer.masksToBounds = YES;

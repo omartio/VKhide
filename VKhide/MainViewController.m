@@ -136,7 +136,7 @@
         //Ava
         NSString *avaUrl = response.json[0][@"photo_max"];
         
-        [self.profileButton.imageView setImageWithURL:[NSURL URLWithString: avaUrl] placeholderImage:[UIImage imageNamed:@"no_avatar.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        [self.profileButton.imageView sd_setImageWithURL:[NSURL URLWithString: avaUrl] placeholderImage:[UIImage imageNamed:@"no_avatar.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             [self.profileButton setImage:image forState:UIControlStateNormal];
         }];
         CALayer* lr = [self.profileButton.imageView layer];
@@ -309,7 +309,7 @@
     //Отоброжение друга
     id friend = self.favFriends[indexPath.item];
     
-    [cell.avaImg setImageWithURL:[NSURL URLWithString:friend[@"photo_max"]] placeholderImage:[UIImage imageNamed:@"no_avatar.png"]];
+    [cell.avaImg sd_setImageWithURL:[NSURL URLWithString:friend[@"photo_max"]] placeholderImage:[UIImage imageNamed:@"no_avatar.png"]];
     cell.mobileImg.hidden = !(((((NSString *) friend[@"online_mobile"]).intValue == 1) || ((NSString *)friend[@"last_seen"][@"platform"]).intValue < 7));
     cell.avaImg.layer.masksToBounds = YES;
     cell.avaImg.layer.borderColor = [[UIColor whiteColor] CGColor];

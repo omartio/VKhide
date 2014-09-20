@@ -15,6 +15,7 @@
 @interface SearchUserViewController ()
 
 @property (nonatomic, strong) NSArray *results;
+@property (nonatomic, strong) UIActionSheet *menu;
 
 @end
 
@@ -33,6 +34,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.menu = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:@"Добавить в список", @"Добавить в избранное", nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,7 +69,7 @@
     cell.textLabel.textColor = [UIColor darkGrayColor];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", friend.first_name, friend.last_name];
     
-    [cell.imageView setImageWithURL:[NSURL URLWithString:friend.ava_url] placeholderImage:[UIImage imageNamed:@"no_avatar.png"]];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:friend.ava_url] placeholderImage:[UIImage imageNamed:@"no_avatar.png"]];
 
     cell.imageView.layer.masksToBounds = YES;
     cell.imageView.layer.borderWidth = 0;
@@ -77,7 +80,21 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.addButton setEnabled:YES];
+    CGRect rect = [tableView rectForRowAtIndexPath:indexPath];
+    [self.menu showFromRect:rect inView:[tableView cellForRowAtIndexPath:indexPath] animated:YES];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    Friend *friend = self.results[[self.tableView indexPathForSelectedRow].row];
+    [[FriendsStore sharedStore] addAdditionalUsers:friend];
+    //Если надо добавляем сразу и в избранное
+    if (buttonIndex == 1)
+    {
+        [[[FriendsStore sharedStore] favFriendsIDs] addObject:friend.id_user];
+        [[FriendsStore sharedStore] saveFavFriends];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -88,14 +105,6 @@
         [self searchUser:fString type:[self.typePicker selectedSegmentIndex]];
     }
     return YES;
-}
-
-//Нажата кнопка добавить
--(IBAction)addButtonTapped:(id)sender
-{
-    NSInteger row = [self.tableView indexPathForSelectedRow].row;
-    [[FriendsStore sharedStore] addAdditionalUsers:self.results[row]];
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 //Нажата кнопка найти
