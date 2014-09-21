@@ -93,7 +93,7 @@
     {
         [self.hideFavButtom setImage:[UIImage imageNamed:@"view.png"] forState:UIControlStateNormal];
     }
-
+    [self.hideFavButtom setImageEdgeInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
 }
 
 #pragma mark - Table view data source
