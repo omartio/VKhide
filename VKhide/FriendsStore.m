@@ -55,6 +55,14 @@
     [self.prefs synchronize];
 }
 
+-(void)addFavFriendsIDs:(NSString *)id_user
+{
+    if ([self.favFriendsIDs indexOfObject:id_user] != NSNotFound)
+        return;
+    [self.favFriendsIDs addObject:id_user];
+    [self saveFavFriends];
+}
+
 -(void)saveAddFriends
 {
     [self.prefs setObject:self.additionalUsers forKey:@"additionalUsers"];

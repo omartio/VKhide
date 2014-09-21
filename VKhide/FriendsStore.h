@@ -22,10 +22,12 @@
 
 - (void)updateFriendsListForTableView:(UITableViewController *)tvc;
 - (void)saveFavFriends;
+- (void)addFavFriendsIDs:(NSString *)id_user;
 - (void)saveAddFriends;
 - (void)addAdditionalUsers:(Friend *)user;
 - (void)deleteAdditionalUserWithIndexInArray:(NSInteger)index;
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope;
+
 
 @end

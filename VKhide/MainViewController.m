@@ -210,6 +210,12 @@
     if ([[[FriendsStore sharedStore] favFriendsIDs] count] == 0)
         return;
     
+    NSArray *visCells = [self.favFriendCollectionView visibleCells];
+    for (FavFriendCell *cell in visCells)
+    {
+        cell.titelLabel.hidden = YES;
+    }
+    
     NSMutableString *favIDs = [NSMutableString stringWithString:@""];
     for (NSString *uid in [[FriendsStore sharedStore] favFriendsIDs])
         [favIDs appendString:[NSString stringWithFormat:@"%@,", uid]];
@@ -220,6 +226,11 @@
         NSLog(@"%@", response.json);
         self.favFriends = [NSMutableArray arrayWithArray:response.json];
         [self.favFriendCollectionView reloadData];
+        for (FavFriendCell *cell in visCells)
+        {
+            cell.titelLabel.hidden = NO;
+        }
+
     } errorBlock:^(NSError * error) {
         if (error.code != VK_API_ERROR) {
             [error.vkError.request repeat];

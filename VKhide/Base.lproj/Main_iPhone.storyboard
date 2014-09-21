@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Ben-6X-n1i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Ben-6X-n1i">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
@@ -183,6 +183,7 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                     </view>
                     <navigationItem key="navigationItem" id="rTr-A8-RvM">
                         <barButtonItem key="leftBarButtonItem" id="BtS-cT-dJk">
@@ -293,12 +294,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Поиск" id="Dav-zd-cwK">
-                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="kZS-yf-ELh">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
-                                <outlet property="delegate" destination="gRc-KP-BMQ" id="kfy-bO-mrI"/>
+                                <outlet property="delegate" destination="gRc-KP-BMQ" id="e3h-Ni-5BV"/>
                             </connections>
                         </searchBar>
                         <prototypes>
@@ -340,23 +341,23 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchDisplayController" destination="Vsi-Y1-OfL" id="8pa-Zs-PFm"/>
+                        <outlet property="searchDisplayController" destination="LXM-tc-fn7" id="Wmv-mp-XAH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JqS-BT-n7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="Vsi-Y1-OfL">
+                <searchDisplayController id="LXM-tc-fn7">
                     <connections>
-                        <outlet property="delegate" destination="gRc-KP-BMQ" id="zPV-8s-sjp"/>
-                        <outlet property="searchBar" destination="Dav-zd-cwK" id="I9q-fg-63A"/>
-                        <outlet property="searchContentsController" destination="gRc-KP-BMQ" id="Ck3-SS-ULy"/>
-                        <outlet property="searchResultsDataSource" destination="gRc-KP-BMQ" id="M9J-3n-oyc"/>
-                        <outlet property="searchResultsDelegate" destination="gRc-KP-BMQ" id="Pa4-nZ-oXb"/>
+                        <outlet property="delegate" destination="gRc-KP-BMQ" id="Yev-V4-gdW"/>
+                        <outlet property="searchBar" destination="kZS-yf-ELh" id="TJc-20-vch"/>
+                        <outlet property="searchContentsController" destination="gRc-KP-BMQ" id="nB1-xJ-gw5"/>
+                        <outlet property="searchResultsDataSource" destination="gRc-KP-BMQ" id="XHM-DS-1GR"/>
+                        <outlet property="searchResultsDelegate" destination="gRc-KP-BMQ" id="nRZ-Bt-Mh5"/>
                     </connections>
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1173" y="66"/>
         </scene>
-        <!--Search User View Controller-->
+        <!--Добавление в список-->
         <scene sceneID="onj-Ng-kV4">
             <objects>
                 <viewController storyboardIdentifier="SearchUserViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9Lk-tf-vfc" customClass="SearchUserViewController" sceneMemberID="viewController">
@@ -435,16 +436,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0ZU-R0-e6n">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Добавить" id="Ohz-H9-94x">
-                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="addButtonTapped:" destination="9Lk-tf-vfc" id="sJN-q9-n3g"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Добавление в список" id="0ZU-R0-e6n"/>
                     <connections>
-                        <outlet property="addButton" destination="Ohz-H9-94x" id="6fs-zn-PEm"/>
                         <outlet property="searchButton" destination="5GB-Op-Nr5" id="Gcq-jn-3nj"/>
                         <outlet property="searchTextField" destination="Cud-uP-KdD" id="6h2-bV-iyU"/>
                         <outlet property="spinner" destination="EFZ-ky-fEm" id="k1e-Bg-vY6"/>

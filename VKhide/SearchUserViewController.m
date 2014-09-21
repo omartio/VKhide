@@ -65,6 +65,14 @@
     
     Friend *friend = self.results[indexPath.row];
     
+    cell.userInteractionEnabled = YES;
+    cell.textLabel.enabled = YES;
+    
+    if ([[[FriendsStore sharedStore] favFriendsIDs] indexOfObject:friend.id_user] != NSNotFound)
+    {
+        cell.userInteractionEnabled = NO;
+        cell.textLabel.enabled = NO;
+    }
     
     cell.textLabel.textColor = [UIColor darkGrayColor];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", friend.first_name, friend.last_name];
@@ -84,6 +92,7 @@
     [self.menu showFromRect:rect inView:[tableView cellForRowAtIndexPath:indexPath] animated:YES];
 }
 
+//Добавление
 -(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     Friend *friend = self.results[[self.tableView indexPathForSelectedRow].row];
@@ -91,8 +100,7 @@
     //Если надо добавляем сразу и в избранное
     if (buttonIndex == 1)
     {
-        [[[FriendsStore sharedStore] favFriendsIDs] addObject:friend.id_user];
-        [[FriendsStore sharedStore] saveFavFriends];
+        [[FriendsStore sharedStore] addFavFriendsIDs:friend.id_user];
     }
     [self.navigationController popViewControllerAnimated:YES];
 }

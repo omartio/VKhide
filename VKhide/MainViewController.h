@@ -13,7 +13,7 @@
 #import <LXReorderableCollectionViewFlowLayout.h>
 #import <iAd/iAd.h>
 
-@interface MainViewController : UIViewController <UINavigationControllerDelegate, UIAlertViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, LXReorderableCollectionViewDataSource, LXReorderableCollectionViewDelegateFlowLayout, ADBannerViewDelegate>
+@interface MainViewController : UIViewController <UINavigationControllerDelegate, UIAlertViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, LXReorderableCollectionViewDataSource, LXReorderableCollectionViewDelegateFlowLayout, ADBannerViewDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *avaImg;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *frindButton;
 @property (weak, nonatomic) IBOutlet UIButton *lastseenBG;
 @property (weak, nonatomic) IBOutlet UIButton *profileButton;
+
 
 
 @property (weak, nonatomic) IBOutlet UICollectionView *favFriendCollectionView;
