@@ -63,6 +63,17 @@
     [self saveFavFriends];
 }
 
+-(BOOL)userIsInList:(NSString *)id_user
+{
+    Friend *checkingFriend = [Friend FriendWithID:id_user];
+    return ([self.additionalUsers indexOfObject:checkingFriend.id_user] != NSNotFound);
+}
+
+-(BOOL)userIsFavorite:(NSString *)id_user
+{
+    return ([self.favFriendsIDs indexOfObject:id_user] != NSNotFound);
+}
+
 -(void)saveAddFriends
 {
     [self.prefs setObject:self.additionalUsers forKey:@"additionalUsers"];

@@ -68,7 +68,7 @@
     cell.userInteractionEnabled = YES;
     cell.textLabel.enabled = YES;
     
-    if ([[[FriendsStore sharedStore] favFriendsIDs] indexOfObject:friend.id_user] != NSNotFound)
+    if ([[FriendsStore sharedStore] userIsInList:friend.id_user])
     {
         cell.userInteractionEnabled = NO;
         cell.textLabel.enabled = NO;
@@ -88,6 +88,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     CGRect rect = [tableView rectForRowAtIndexPath:indexPath];
     [self.menu showFromRect:rect inView:[tableView cellForRowAtIndexPath:indexPath] animated:YES];
 }

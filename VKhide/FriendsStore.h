@@ -23,6 +23,10 @@
 - (void)updateFriendsListForTableView:(UITableViewController *)tvc;
 - (void)saveFavFriends;
 - (void)addFavFriendsIDs:(NSString *)id_user;
+
+- (BOOL)userIsInList:(NSString *)id_user;
+- (BOOL)userIsFavorite:(NSString *)id_user;
+
 - (void)saveAddFriends;
 - (void)addAdditionalUsers:(Friend *)user;
 - (void)deleteAdditionalUserWithIndexInArray:(NSInteger)index;

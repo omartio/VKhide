@@ -37,4 +37,22 @@
     return friend;
 }
 
++(id)FriendWithID:(NSString *)uid
+{
+    Friend *friend = [[self alloc] init];
+    friend.id_user = uid;
+    return friend;
+}
+
+-(NSUInteger)hash
+{
+    return self.id_user.integerValue;
+}
+
+-(BOOL)isEqual:(id)object
+{
+    Friend *bFriend = object;
+    return [self.id_user isEqualToString:bFriend.id_user];
+}
+
 @end
