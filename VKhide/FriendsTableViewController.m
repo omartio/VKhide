@@ -19,6 +19,10 @@
 @end
 
 @implementation FriendsTableViewController
+{
+    NSUserDefaults *_pref;
+    BOOL _hideFavs;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -40,6 +44,11 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //[self.tableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VKhideBG.png"]]];
+    
+    _pref = [NSUserDefaults standardUserDefaults];
+    
+    _hideFavs = [_pref boolForKey:@"hideFavs"];
+    [self hideButtonImageUpdate];
     
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Потяните чтобы обновить"];
@@ -64,6 +73,28 @@
     [[FriendsStore sharedStore] updateFriendsListForTableView:self];
 }
 
+- (IBAction)changeViewMode:(UIButton *)sender {
+    _hideFavs = !_hideFavs;
+    [_pref setBool:_hideFavs forKey:@"hideFavs"];
+    [_pref synchronize];
+    
+    [self hideButtonImageUpdate];
+    
+    [self.tableView reloadData];
+}
+
+- (void)hideButtonImageUpdate
+{
+    if (_hideFavs)
+    {
+        [self.hideFavButtom setImage:[UIImage imageNamed:@"hide.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.hideFavButtom setImage:[UIImage imageNamed:@"view.png"] forState:UIControlStateNormal];
+    }
+
+}
 
 #pragma mark - Table view data source
 
@@ -86,12 +117,14 @@
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         return [[[FriendsStore sharedStore] searchResults] count];
     }else{
+        if (_hideFavs)
+            return [[[FriendsStore sharedStore] hiddenFriends] count];
         return [[[FriendsStore sharedStore] allFriends] count];
     }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{    
     return 64;
 }
 
@@ -103,10 +136,12 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FriendCell"];
     }
-    
-    
+
     Friend *friend;
     friend = [[[FriendsStore sharedStore] allFriends] objectAtIndex:indexPath.row];
+    
+    if (_hideFavs)
+        friend = [[[FriendsStore sharedStore] hiddenFriends] objectAtIndex:indexPath.row];
     
     if (tableView == self.searchDisplayController.searchResultsTableView)
         friend = [[[FriendsStore sharedStore] searchResults] objectAtIndex:indexPath.row];
@@ -142,8 +177,6 @@
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Был%@ в сети %@", sex, ls];
     }
     
-    cell.showsReorderControl = YES;
-    
     //NSString *mob = [friend mobile] ? @" (моб.)" : @"";
     //cell.detailTextLabel.text = [cell.detailTextLabel.text stringByAppendingString:mob];
     
@@ -152,7 +185,13 @@
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return NO;
+    }
+    if (_hideFavs)
+        return (indexPath.row < (long)[[FriendsStore sharedStore] additionalUsersNonHidenCount]);
     return (indexPath.row < [[[FriendsStore sharedStore] additionalUsers] count]);
+
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -162,11 +201,6 @@
         [[FriendsStore sharedStore]  deleteAdditionalUserWithIndexInArray:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
-}
-
--(BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return (indexPath.row < [[[FriendsStore sharedStore] additionalUsers] count]);
 }
 
 -(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath

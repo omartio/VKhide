@@ -39,6 +39,8 @@
     if (self)
     {
         _allFriends = [[NSMutableArray alloc] init];
+        _hiddenFriends = [[NSMutableArray alloc] init];
+
         //_additionalUsers = [[NSMutableArray alloc] init];
         self.prefs = [NSUserDefaults standardUserDefaults];
         //[self.prefs removeObjectForKey:@"favFriends"];
@@ -98,6 +100,8 @@
 -(void)updateFriendsListForTableView:(UITableViewController *)tvc
 {
     [[[FriendsStore sharedStore] allFriends] removeAllObjects];
+    [[[FriendsStore sharedStore] hiddenFriends] removeAllObjects];
+    self.additionalUsersNonHidenCount = 0;
     
     NSMutableString *ids_vk = [[NSMutableString alloc] initWithString:@""];
     for (NSString *user_id_vk in self.additionalUsers)
@@ -124,6 +128,12 @@
                               ];
              
              [[[FriendsStore sharedStore] allFriends] insertObject:friend atIndex:0];
+
+             if (![[FriendsStore sharedStore] userIsFavorite:friend.id_user])
+             {
+                 [[[FriendsStore sharedStore] hiddenFriends] insertObject:friend atIndex:0];
+                 self.additionalUsersNonHidenCount++;
+             }
          }
          
          self.lastRefresh = [NSDate date];
@@ -157,6 +167,8 @@
                              ];
             
             [[[FriendsStore sharedStore] allFriends] addObject:friend];
+            if (![[FriendsStore sharedStore] userIsFavorite:friend.id_user])
+                [[[FriendsStore sharedStore] hiddenFriends] addObject:friend];
         }
         
         self.lastRefresh = [NSDate date];

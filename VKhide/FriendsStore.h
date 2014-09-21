@@ -14,7 +14,10 @@
 
 @property (strong, nonatomic) NSMutableArray *allFriends;
 @property (strong, nonatomic) NSMutableArray *favFriendsIDs;
+@property (strong, nonatomic) NSMutableArray *hiddenFriends;
 @property (strong, nonatomic) NSMutableArray *additionalUsers; //Самостоятельно добавленные юзеры (их id_vk)
+@property (nonatomic) NSInteger *additionalUsersNonHidenCount; //Самостоятельно добавленные юзеры (их id_vk)
+
 
 @property (readwrite, nonatomic) NSArray *searchResults;
 

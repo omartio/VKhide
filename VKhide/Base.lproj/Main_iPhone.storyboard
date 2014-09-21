@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Ben-6X-n1i">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -333,14 +334,28 @@
                             <outlet property="delegate" destination="gRc-KP-BMQ" id="Zbp-Jc-Wgr"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="MEF-Uf-Ajc">
+                        <nil key="title"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YWH-SB-sb1">
+                            <rect key="frame" x="109" y="-2" width="103" height="48"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="hide.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="changeViewMode:" destination="gRc-KP-BMQ" eventType="touchUpInside" id="N2g-0w-vlc"/>
+                            </connections>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2YA-bA-lVn">
                             <connections>
                                 <segue destination="9Lk-tf-vfc" kind="push" id="Uxy-Tk-hrJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="hideFavButtom" destination="YWH-SB-sb1" id="yRz-wc-xXF"/>
                         <outlet property="searchDisplayController" destination="LXM-tc-fn7" id="Wmv-mp-XAH"/>
                     </connections>
                 </tableViewController>
@@ -455,6 +470,7 @@
         <image name="VKhideLaunchR4.png" width="640" height="1136"/>
         <image name="back_time.png" width="128" height="117"/>
         <image name="direct_time.png" width="128" height="128"/>
+        <image name="hide.png" width="48" height="48"/>
         <image name="mobile.png" width="32" height="32"/>
         <image name="mobile_b.png" width="32" height="32"/>
         <image name="no_avatar.png" width="140" height="140"/>

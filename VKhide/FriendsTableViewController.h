@@ -10,5 +10,6 @@
 #import <SWTableViewCell.h>
 
 @interface FriendsTableViewController : UITableViewController <UISearchDisplayDelegate, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *hideFavButtom;
 
 @end
