@@ -1,0 +1,8 @@
+platform :ios, '7.0'
+pod 'VK-ios-sdk', '~> 1.0.7'
+pod 'SDWebImage', '~> 3.7'
+pod 'NGAParallaxMotion', '~> 1.0'
+pod 'SWTableViewCell', '~> 0.3'
+pod 'NimbusKit-AttributedLabel', '~> 1.0'
+pod 'LXReorderableCollectionViewFlowLayout', '~> 0.1'
+workspace 'VKhide'
