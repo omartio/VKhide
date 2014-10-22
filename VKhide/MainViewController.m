@@ -78,8 +78,8 @@
 {
     [super viewDidAppear:animated];
     
-    _adBanner = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 50)];
-    _adBanner.delegate = self;
+    //_adBanner = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 50)];
+    //_adBanner.delegate = self;
 }
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
@@ -95,7 +95,7 @@
         [UIView beginAnimations:@"animateAdBannerOn" context:NULL];
         
         // Assumes the banner view is just off the bottom of the screen.
-        banner.frame = CGRectOffset(banner.frame, 0, -banner.frame.size.height);
+        banner.frame = CGRectMake(0, self.view.frame.size.height - banner.frame.size.height, banner.frame.size.width, banner.frame.size.height);// CGRectOffset(banner.frame, 0, -banner.frame.size.height);
         
         [UIView commitAnimations];
         
@@ -112,7 +112,7 @@
         [UIView beginAnimations:@"animateAdBannerOff" context:NULL];
         
         // Assumes the banner view is placed at the bottom of the screen.
-        banner.frame = CGRectOffset(banner.frame, 0, banner.frame.size.height);
+        banner.frame = CGRectMake(0, self.view.frame.size.height + banner.frame.size.height, banner.frame.size.width, banner.frame.size.height);
         
         [UIView commitAnimations];
         

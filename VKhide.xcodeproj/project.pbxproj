@@ -16,6 +16,7 @@
 		90E47F5B19C8E01B00059A88 /* back_time.png in Resources */ = {isa = PBXBuildFile; fileRef = 90E47F5A19C8E01B00059A88 /* back_time.png */; };
 		90E71A1819ACDE5D009D0A36 /* VKhideLaunchR4.png in Resources */ = {isa = PBXBuildFile; fileRef = 90E71A1719ACDE5D009D0A36 /* VKhideLaunchR4.png */; };
 		90E85229198D535C00BF4C84 /* mobile.png in Resources */ = {isa = PBXBuildFile; fileRef = 90E85228198D535C00BF4C84 /* mobile.png */; };
+		90EAF99C19D0656F00E916F6 /* VKhide.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 90EAF99B19D0656F00E916F6 /* VKhide.entitlements */; };
 		90EAFE92197ECD3300463F76 /* VKhideBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 90EAFE91197ECD3300463F76 /* VKhideBG.png */; };
 		90EB79B919759258008AA8E6 /* FavFrinedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90EB79B819759258008AA8E6 /* FavFrinedTableViewController.m */; };
 		90EB79BB197595FE008AA8E6 /* add_inv.png in Resources */ = {isa = PBXBuildFile; fileRef = 90EB79BA197595FE008AA8E6 /* add_inv.png */; };
@@ -75,7 +76,6 @@
 		908C6AE419CEFAD600C838AB /* hide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hide.png; sourceTree = "<group>"; };
 		909CE5321997B99B00CF6333 /* mobile_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobile_b.png; sourceTree = "<group>"; };
 		90DCAC7719CDDF960045D4B3 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		90DCAC8A19CDE0F90045D4B3 /* VKhide.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VKhide.entitlements; sourceTree = "<group>"; };
 		90E3F9C119C065160091A71F /* SearchUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchUserViewController.h; sourceTree = "<group>"; };
 		90E3F9C219C065160091A71F /* SearchUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchUserViewController.m; sourceTree = "<group>"; };
 		90E44FEC19C852B500635A38 /* FavFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavFriendCell.h; sourceTree = "<group>"; };
@@ -84,6 +84,7 @@
 		90E47F5A19C8E01B00059A88 /* back_time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_time.png; sourceTree = "<group>"; };
 		90E71A1719ACDE5D009D0A36 /* VKhideLaunchR4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VKhideLaunchR4.png; sourceTree = "<group>"; };
 		90E85228198D535C00BF4C84 /* mobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobile.png; sourceTree = "<group>"; };
+		90EAF99B19D0656F00E916F6 /* VKhide.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = VKhide.entitlements; sourceTree = "<group>"; };
 		90EAFE91197ECD3300463F76 /* VKhideBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VKhideBG.png; sourceTree = "<group>"; };
 		90EB79B719759258008AA8E6 /* FavFrinedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavFrinedTableViewController.h; sourceTree = "<group>"; };
 		90EB79B819759258008AA8E6 /* FavFrinedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavFrinedTableViewController.m; sourceTree = "<group>"; };
@@ -224,7 +225,7 @@
 		A5ED8BE619646130007F4279 /* VKhide */ = {
 			isa = PBXGroup;
 			children = (
-				90DCAC8A19CDE0F90045D4B3 /* VKhide.entitlements */,
+				90EAF99B19D0656F00E916F6 /* VKhide.entitlements */,
 				90E3F9C419C065270091A71F /* Img */,
 				A5ED8BEF19646130007F4279 /* AppDelegate.h */,
 				A5ED8BF019646130007F4279 /* AppDelegate.m */,
@@ -375,6 +376,7 @@
 				A5ED8BFC19646130007F4279 /* Images.xcassets in Resources */,
 				90EB79BB197595FE008AA8E6 /* add_inv.png in Resources */,
 				A5ED8BF419646130007F4279 /* Main_iPhone.storyboard in Resources */,
+				90EAF99C19D0656F00E916F6 /* VKhide.entitlements in Resources */,
 				90EC378419CF2F7D00666301 /* hide@2x.png in Resources */,
 				A5ED8BEB19646130007F4279 /* InfoPlist.strings in Resources */,
 				90E47F5919C8E01100059A88 /* direct_time.png in Resources */,
@@ -575,7 +577,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = VKhide/VKhide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -583,7 +584,7 @@
 				INFOPLIST_FILE = "VKhide/VKhide-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "657674AD-6730-4A53-83EB-8EF62FBC463F";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -595,7 +596,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = VKhide/VKhide.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -603,7 +603,7 @@
 				INFOPLIST_FILE = "VKhide/VKhide-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "657674AD-6730-4A53-83EB-8EF62FBC463F";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
