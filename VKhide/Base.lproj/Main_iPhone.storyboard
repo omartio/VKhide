@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Ben-6X-n1i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A283o" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Ben-6X-n1i">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -71,9 +72,6 @@
                                 <rect key="frame" x="20" y="177" width="280" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="changeLastSeen:" destination="cJx-1C-ypR" eventType="touchUpInside" id="RKZ-1l-dEl"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0LC-O1-I0y">
                                 <rect key="frame" x="121" y="79" width="186" height="46"/>
@@ -336,6 +334,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="MEF-Uf-Ajc">
                         <nil key="title"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="Cjg-Ni-gh8"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YWH-SB-sb1">
                             <rect key="frame" x="136" y="6" width="48" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -450,7 +449,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Добавление в список" id="0ZU-R0-e6n"/>
+                    <navigationItem key="navigationItem" title="Добавление в список" id="0ZU-R0-e6n">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Itc-Al-2Hi">
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchButton" destination="5GB-Op-Nr5" id="Gcq-jn-3nj"/>
                         <outlet property="searchTextField" destination="Cud-uP-KdD" id="6h2-bV-iyU"/>
