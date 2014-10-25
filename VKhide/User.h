@@ -16,4 +16,6 @@
 @property (nonatomic) NSString* id_user;
 @property (nonatomic) UIImage* userAva;
 
+-(void)openProInAppStore;
+
 @end

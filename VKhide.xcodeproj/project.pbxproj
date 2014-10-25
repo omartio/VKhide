@@ -22,6 +22,7 @@
 		90EB79BB197595FE008AA8E6 /* add_inv.png in Resources */ = {isa = PBXBuildFile; fileRef = 90EB79BA197595FE008AA8E6 /* add_inv.png */; };
 		90EC378319CF2F7D00666301 /* view@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 90EC378119CF2F7D00666301 /* view@2x.png */; };
 		90EC378419CF2F7D00666301 /* hide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 90EC378219CF2F7D00666301 /* hide@2x.png */; };
+		A51FDF5819FA730F003B5EDD /* PromoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A51FDF5719FA730F003B5EDD /* PromoViewController.m */; };
 		A57D7454196826C80080BE08 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D7453196826C80080BE08 /* NSDate+Utilities.m */; };
 		A57D745719683E710080BE08 /* FriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D745619683E710080BE08 /* FriendsTableViewController.m */; };
 		A57D745A19683E8F0080BE08 /* FriendsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A57D745919683E8F0080BE08 /* FriendsStore.m */; };
@@ -94,6 +95,8 @@
 		90EFC03719811BB00060C3B2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		90EFC03819811BB00060C3B2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		90EFC03919811BB00060C3B2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A51FDF5619FA730F003B5EDD /* PromoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PromoViewController.h; sourceTree = "<group>"; };
+		A51FDF5719FA730F003B5EDD /* PromoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PromoViewController.m; sourceTree = "<group>"; };
 		A57D7452196826C80080BE08 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
 		A57D7453196826C80080BE08 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
 		A57D745519683E710080BE08 /* FriendsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableViewController.h; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 				A57D7453196826C80080BE08 /* NSDate+Utilities.m */,
 				A5ED8BF219646130007F4279 /* Main_iPhone.storyboard */,
 				90E44FEF19C8543A00635A38 /* Model */,
+				A51FDF5619FA730F003B5EDD /* PromoViewController.h */,
+				A51FDF5719FA730F003B5EDD /* PromoViewController.m */,
 				90E3F9C119C065160091A71F /* SearchUserViewController.h */,
 				90E3F9C219C065160091A71F /* SearchUserViewController.m */,
 				90EB79B719759258008AA8E6 /* FavFrinedTableViewController.h */,
@@ -443,6 +448,7 @@
 				A5ED8BFA19646130007F4279 /* ViewController.m in Sources */,
 				A57D745A19683E8F0080BE08 /* FriendsStore.m in Sources */,
 				A5ED8BF119646130007F4279 /* AppDelegate.m in Sources */,
+				A51FDF5819FA730F003B5EDD /* PromoViewController.m in Sources */,
 				A5ED8BED19646130007F4279 /* main.m in Sources */,
 				A58B4BB9196714C500D9E548 /* MainViewController.m in Sources */,
 				A57D7454196826C80080BE08 /* NSDate+Utilities.m in Sources */,
@@ -584,7 +590,7 @@
 				INFOPLIST_FILE = "VKhide/VKhide-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "657674AD-6730-4A53-83EB-8EF62FBC463F";
+				PROVISIONING_PROFILE = "dc3b5e0c-c85f-41d8-a2ba-b30eb3889a2e";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -603,7 +609,7 @@
 				INFOPLIST_FILE = "VKhide/VKhide-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "657674AD-6730-4A53-83EB-8EF62FBC463F";
+				PROVISIONING_PROFILE = "dc3b5e0c-c85f-41d8-a2ba-b30eb3889a2e";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

@@ -34,5 +34,11 @@
     return self;
 }
 
+-(void)openProInAppStore
+{
+    NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/ru/app/druz-a-onlajn-dla-vkontakte/id906358004?l=en&mt=8"];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
 
 @end

@@ -348,6 +348,15 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    //LITE
+    if (indexPath.item == 3)
+    {
+        UIViewController *promoVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PromoViewController"];
+        [self.navigationController presentViewController:promoVC animated:YES completion:nil];
+        return;
+    }
+    //////
+    
     FavFrinedTableViewController *fftvc = [self.storyboard instantiateViewControllerWithIdentifier:@"FavFrinedTableViewController"];
     fftvc.favID = indexPath.item;
     [self.navigationController pushViewController:fftvc animated:YES];

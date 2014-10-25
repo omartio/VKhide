@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Appirater.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Appirater.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-LXReorderableCollectionViewFlowLayout.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2F34DBF3792D47DE846A380C</key>
+		<key>0ED82450D22E4062A9482B1A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>32CBC552EA934DBE82EC697B</key>
+		<key>2B5016348F83435BAC39CFE7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>80D717F214CD4AB6B128D92E</key>
+		<key>2D8318E229E94C7699DCDF2E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D47069CE237546D5AC9E221F</key>
+		<key>6372CE7CE1F34F0F9FD20EC7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E5778AB13A3B4E58BCF31AEE</key>
+		<key>6DD5031DAFB1473D9C711CF0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F8CD730A8721424FA25CAB23</key>
+		<key>9FC0269290F24F8BA6C25119</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F9D0718CF134442FA62115CF</key>
+		<key>A6C30990E59B4CFD94139932</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F6E1D95E0D6042C3A3035EE0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FB75DE9802F54E64A59324EE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

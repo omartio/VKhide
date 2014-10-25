@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F8CD730A8721424FA25CAB23"
+               BlueprintIdentifier = "A6C30990E59B4CFD94139932"
                BuildableName = "libPods-NimbusKit-AttributedLabel.a"
                BlueprintName = "Pods-NimbusKit-AttributedLabel"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -25,7 +25,7 @@ static NSArray  * SCOPE = nil;
     SCOPE = @[VK_PER_WALL, VK_PER_FRIENDS, VK_PER_GROUPS, VK_PER_NOHTTPS];
 	[super viewDidLoad];
     
-	[VKSdk initializeWithDelegate:self andAppId:@"4442573"];
+	[VKSdk initializeWithDelegate:self andAppId:@"4604737"];
     
     if ([VKSdk wakeUpSession])
     {

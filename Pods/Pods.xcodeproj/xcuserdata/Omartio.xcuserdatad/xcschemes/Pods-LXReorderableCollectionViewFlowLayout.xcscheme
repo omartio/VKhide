@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E5778AB13A3B4E58BCF31AEE"
+               BlueprintIdentifier = "FB75DE9802F54E64A59324EE"
                BuildableName = "libPods-LXReorderableCollectionViewFlowLayout.a"
                BlueprintName = "Pods-LXReorderableCollectionViewFlowLayout"
                ReferencedContainer = "container:Pods.xcodeproj">
