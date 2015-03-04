@@ -88,6 +88,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //LITE
+    UIViewController *promoVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PromoViewController"];
+    [self.navigationController presentViewController:promoVC animated:YES completion:nil];
+    return;
+    //////
     
     CGRect rect = [tableView rectForRowAtIndexPath:indexPath];
     [self.menu showFromRect:rect inView:[tableView cellForRowAtIndexPath:indexPath] animated:YES];
@@ -128,6 +133,17 @@
 {
     [self.searchTextField resignFirstResponder];
     [self searchUser:self.searchTextField.text type:[self.typePicker selectedSegmentIndex]];
+}
+
+//Нажатие вне клавиатуры
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.searchTextField resignFirstResponder];
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.searchTextField resignFirstResponder];
 }
 
 //Ищет по запросу и загружает результат в таблицу

@@ -14,7 +14,7 @@
 {
     // Override point for customization after application launch.
     
-    [Appirater setAppId:@"906358004"];
+    [Appirater setAppId:@"933561337"];
     [Appirater appLaunched:YES];
     [Appirater setDebug:NO];
     

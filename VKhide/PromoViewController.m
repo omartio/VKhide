@@ -27,6 +27,7 @@
 }
 - (IBAction)openAppStore:(id)sender {
     [[User sharedUser] openProInAppStore];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)dissmisButtonTapped:(id)sender {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];

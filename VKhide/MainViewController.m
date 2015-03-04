@@ -14,6 +14,8 @@
 #import "FavFrinedTableViewController.h"
 #import "FavFriendCell.h"
 #import <iAd/iAd.h>
+#import "GADBannerView.h"
+#import "GADRequest.h"
 
 @interface MainViewController ()
 
@@ -32,6 +34,8 @@
     
     BOOL _bannerIsVisible;
     ADBannerView *_adBanner;
+    
+    GADBannerView *_bannerView;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -71,6 +75,8 @@
     [self makeRectangleCorners:self.nameLabel.layer];
     [self makeRectangleCorners:self.frindButton.layer];
     [self makeRectangleCorners:self.lastseenBG.layer];
+    
+    self.adSelfBanner.hidden = YES;
 
 }
 
@@ -78,12 +84,24 @@
 {
     [super viewDidAppear:animated];
     
-    //_adBanner = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 50)];
-    //_adBanner.delegate = self;
+    _adBanner = [[ADBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, 320, 50)];
+    _adBanner.delegate = self;
+    
+    
+    _bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    // Replace this ad unit ID with your own ad unit ID.
+    _bannerView.adUnitID = @"ca-app-pub-3244156087014337/1126778805";
+    _bannerView.rootViewController = self;
+    
+    _bannerView.frame = CGRectMake(0, self.view.frame.size.height - _bannerView.frame.size.height, _bannerView.frame.size.width, _bannerView.frame.size.height);
+    
 }
+
+#pragma mark Ad
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner
 {
+    self.adSelfBanner.hidden = YES;
     if (!_bannerIsVisible)
     {
         // If banner isn't part of view hierarchy, add it
@@ -118,7 +136,46 @@
         
         _bannerIsVisible = NO;
     }
+    
+    [self.view addSubview:_bannerView];
+    
+    GADRequest *request = [GADRequest request];
+    // Requests test ads on devices you specify. Your test device ID is printed to the console when
+    // an ad request is made.
+    //request.testDevices = @[@"e17b6ef2942389e7cec693df27475d0e"];
+    
+    VKRequest * userReq = [[VKApi users] get:@{VK_API_FIELDS: @"sex, bdate"}];
+    
+    [userReq executeWithResultBlock:^(VKResponse * response) {
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setDateFormat:@"d.MM.yyyy"];
+        NSDate *bdate = [df dateFromString:(NSString *)response.json[0][@"bdate"]];
+        request.birthday = bdate;
+        request.gender = ((NSString *)response.json[0][@"sex"]).intValue == 2 ? kGADGenderMale : kGADGenderFemale;
+        //NSLog(@"%@", request);
+        //NSLog(@"%@", response.json);
+        [_bannerView loadRequest:request];
+    }
+                         errorBlock:^(NSError * error) {
+                             if (error.code != VK_API_ERROR) {
+                                 [error.vkError.request repeat];
+                             } else {
+                                 NSLog(@"VK error: %@", error);
+                                 [_bannerView loadRequest:request];
+                             }
+                         }];
+
+    _adBanner.delegate = nil;
 }
+
+/*
+- (IBAction)selfAdTapped:(id)sender {
+    NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/us/app/gravity-w4lls/id941154308"];
+    [[UIApplication sharedApplication] openURL:url];
+}
+*/
+
+#pragma VK Api
 
 -(void)makeRectangleCorners:(CALayer *)layer
 {
@@ -349,7 +406,7 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     //LITE
-    if (indexPath.item == 3)
+    if (indexPath.item >= 3)
     {
         UIViewController *promoVC = [self.storyboard instantiateViewControllerWithIdentifier:@"PromoViewController"];
         [self.navigationController presentViewController:promoVC animated:YES completion:nil];
